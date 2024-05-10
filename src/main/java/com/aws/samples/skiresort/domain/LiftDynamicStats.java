@@ -53,6 +53,9 @@ public class LiftDynamicStats {
     @DynamoDBAttribute(attributeName = "LiftNumber")
     private int liftNumber;
 
+    @DynamoDBAttribute(attributeName = "OpenLifts")
+    private String openLifts;
+
     @DynamoDBHashKey(attributeName = "PK")
     public String getPK() {
         return "LIFT#" + liftNumber;

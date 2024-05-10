@@ -49,7 +49,7 @@ public class Resort {
     private AvalancheDanger avalancheDanger;
 
     @DynamoDBAttribute(attributeName = "OpenLifts")
-    private Set<String> openLifts;
+    private int openLifts;
 
     @DynamoDBHashKey(attributeName = "PK")
     public String getPK() {
