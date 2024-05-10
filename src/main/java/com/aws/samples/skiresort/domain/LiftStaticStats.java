@@ -16,10 +16,7 @@
  */
 package com.aws.samples.skiresort.domain;
 
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBRangeKey;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
+import com.amazonaws.services.dynamodbv2.datamodeling.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -60,5 +57,23 @@ public class LiftStaticStats {
 
     public void setSK(String sk) {
         // intentionally left blank: SK is static data
+    }
+
+    @DynamoDBIndexHashKey(attributeName = "GSI_2_PK", globalSecondaryIndexName = "GSI_2")
+    public String getGSI2PK() {
+        return "STATIC_DATA";
+    }
+
+    public void setGSI2PK(String gsi2Pk) {
+        // intentionally left blank: PK is set by setting liftNumber attribute
+    }
+
+    @DynamoDBIndexRangeKey(attributeName = "GSI_2_SK", globalSecondaryIndexName = "GSI_2")
+    public String getGSI2SK() {
+        return "LIFT#" + liftNumber;
+    }
+
+    public void setGSI2SK(String gsi2Sk) {
+        // intentionally left blank: SK is set by setting the totalUniqueLiftRiders attribute
     }
 }
