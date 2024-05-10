@@ -21,7 +21,7 @@ import java.util.Map;
 
 @ExtendWith(LocalDBCreationExtension.class)
 @SpringBootTest
-public class ConfirmData {
+public class ConfirmDataTestIT {
 
     static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
