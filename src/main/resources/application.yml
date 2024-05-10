@@ -3,8 +3,8 @@
 amazon:
   access:
     key: key
-    secretkey: secret-key
-  region: local
+    secretkey: key2
+  region: ap-northeast-2
 dynamodb:
   endpoint:
-    url: http://localhost:8000/
+    url: http://newmint.lge.com:8000/

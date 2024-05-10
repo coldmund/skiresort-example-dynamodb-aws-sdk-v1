@@ -97,8 +97,7 @@ public class GlobalSecondaryIndexTestIT {
                 new DynamoDBQueryExpression<LiftDynamicStats>()
                         // reads from GSI can't be consistent
                         .withConsistentRead(false)
-                        .withExpressionAttributeValues(
-                                Map.of(":val1", new AttributeValue().withS("LIFT#" + lift1)))
+                        .withExpressionAttributeValues(Map.of(":val1", new AttributeValue().withS("LIFT#" + lift1)))
                         .withIndexName("GSI_1")
                         .withKeyConditionExpression("GSI_1_PK = :val1"));
 
