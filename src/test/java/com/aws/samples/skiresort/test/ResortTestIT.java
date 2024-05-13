@@ -18,7 +18,6 @@ package com.aws.samples.skiresort.test;
 
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
-import com.aws.samples.skiresort.domain.AvalancheDanger;
 import com.aws.samples.skiresort.domain.Resort;
 import com.aws.samples.skiresort.test.config.DynamoDBIntegrationTestConfiguration;
 import org.junit.jupiter.api.AfterEach;

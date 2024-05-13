@@ -20,28 +20,28 @@ import java.util.Map;
 @SpringBootTest
 public class GsiTest {
 
-    @Autowired
-    private AmazonDynamoDB amazonDynamoDB;
+  @Autowired
+  private AmazonDynamoDB amazonDynamoDB;
 
-    @Autowired
-    private DynamoDBIntegrationTestConfiguration dynamoDBIntegrationTestConfiguration;
+  @Autowired
+  private DynamoDBIntegrationTestConfiguration dynamoDBIntegrationTestConfiguration;
 
-    @BeforeEach
-    public void initDataModel() {
-        dynamoDBIntegrationTestConfiguration.dynamoDBLocalSetup();
-    }
+  @BeforeEach
+  public void initDataModel() {
+    dynamoDBIntegrationTestConfiguration.dynamoDBLocalSetup();
+  }
 
-    @Test
-    void    testGetByGsi() {
+  @Test
+  void    testGetByGsi() {
 
-        DynamoDBMapper mapper = new DynamoDBMapper(amazonDynamoDB);
+    DynamoDBMapper mapper = new DynamoDBMapper(amazonDynamoDB);
 
-        List<LiftStaticStats> results = mapper.query(LiftStaticStats.class,
-                new DynamoDBQueryExpression<LiftStaticStats>()
-                        .withConsistentRead(false)
-                        .withExpressionAttributeValues(Map.of(":val1", new AttributeValue().withS("STATIC_DATA")))
-                        .withIndexName("GSI_2")
-                        .withKeyConditionExpression("GSI_2_PK = :val1"));
-        results.forEach(System.out::println);
-    }
+    List<LiftStaticStats> results = mapper.query(LiftStaticStats.class,
+        new DynamoDBQueryExpression<LiftStaticStats>()
+            .withConsistentRead(false)
+            .withIndexName("GSI_2")
+            .withKeyConditionExpression("GSI_2_PK = :val1")
+            .withExpressionAttributeValues(Map.of(":val1", new AttributeValue().withS("STATIC_DATA"))));
+    results.forEach(System.out::println);
+  }
 }
